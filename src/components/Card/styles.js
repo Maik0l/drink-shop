@@ -8,9 +8,6 @@ export const Container = styled.div`
   img {
     max-width: 10px;
   }
-
-  Description {
-  }
 `;
 
 export const Content = styled.div`

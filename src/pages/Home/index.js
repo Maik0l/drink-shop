@@ -29,6 +29,9 @@ const Home = () => {
           description={item.description}
           unit={item.volume.unit}
           value={item.volume.value}
+          item={item}
+          id={item.id}
+          type="add"
         />
       ))}
     </Container>
