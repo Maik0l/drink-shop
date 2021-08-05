@@ -1,15 +1,38 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import Card from "../../components/Card";
+import { ProductListContext } from "../../providers/ProductList";
 import api from "../../services/api";
+import { Container } from "./styles";
 
 const Home = () => {
+  const { productList, setProductList } = useContext(ProductListContext);
+
   const getDrinks = () => {
-    api.get().then((res) => console.log(res.data));
+    api.get().then((res) => {
+      setProductList(res.data);
+    });
   };
 
-  useEffect(() => {
-    getDrinks();
-  });
-  return <div>Home</div>;
+  console.log(productList);
+
+  useEffect(() => getDrinks(), []);
+
+  console.log();
+  return (
+    <Container>
+      {productList.map((item) => (
+        <Card
+          key={item.id}
+          name={item.name}
+          image_url={item.image_url}
+          first_brewed={item.first_brewed}
+          description={item.description}
+          unit={item.volume.unit}
+          value={item.volume.value}
+        />
+      ))}
+    </Container>
+  );
 };
 
 export default Home;
