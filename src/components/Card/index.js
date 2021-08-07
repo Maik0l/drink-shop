@@ -1,7 +1,8 @@
 import { Container, Content } from "./styles";
 import AddButton from "../AddButton";
 import RemoveButton from "../RemoveButton";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { OptionContext } from "../../providers/Option";
 
 const Card = ({
   name,
@@ -14,18 +15,19 @@ const Card = ({
   item_id,
   type,
 }) => {
-  const [option, setOption] = useState();
+  const { option, setOption } = useContext(OptionContext);
 
   const handleChange = (event) => {
     setOption(event.target.value);
   };
-  console.log(item_id);
+
   return (
     <Container>
       <Content>
         <div>{name}</div>
         <img alt={name} src={image_url} />
         <div>{description}</div>
+        <div>{item_id}</div>
         <div>{first_brewed}</div>
         <div>{`${value} ${unit}`}</div>
         <div>
@@ -38,11 +40,16 @@ const Card = ({
             </select>
           )}
           <div>
-            {type === "add" ? (
-              <AddButton type={type} option={option} item={item} />
-            ) : (
-              <RemoveButton item_id={item_id} />
-            )}
+            {/* {type === "add" ? ( */}
+            <AddButton
+              type={type}
+              option={option}
+              item={item}
+              item_id={item_id}
+            />
+            {/* // ) : (
+            //   <RemoveButton item_id={item_id} option={option} />
+            // )} */}
           </div>
         </div>
       </Content>

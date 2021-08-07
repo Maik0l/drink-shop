@@ -3,13 +3,19 @@ import { WeddingCartContext } from "../../providers/CartWedding";
 import { PromCartContext } from "../../providers/CartProm";
 import { CelebCartContext } from "../../providers/CartCeleb";
 
-const RemoveButton = ({ item_id }) => {
+const RemoveButton = ({ item_id, option }) => {
   const { removeFromWeddingCart } = useContext(WeddingCartContext);
   const { removeFromPromCart } = useContext(PromCartContext);
   const { removeFromCartCeleb } = useContext(CelebCartContext);
-  console.log(item_id);
+
   const handleSend = () => {
-    removeFromPromCart(item_id);
+    if (option === "wedding") {
+      removeFromWeddingCart(item_id);
+    } else if (option === "prom") {
+      removeFromPromCart(item_id);
+    } else if (option === "celebration") {
+      removeFromCartCeleb(item_id);
+    }
   };
 
   return <button onClick={handleSend}>Remove from cart</button>;

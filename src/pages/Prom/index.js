@@ -18,6 +18,7 @@ const Prom = () => {
           value={item.volume.value}
           item={item}
           item_id={item.id}
+          type="remove"
         />
       ))}
     </div>
