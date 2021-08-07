@@ -3,6 +3,7 @@ import { WeddingCartContext } from "../../providers/CartWedding";
 import { PromCartContext } from "../../providers/CartProm";
 import { CelebCartContext } from "../../providers/CartCeleb";
 import { OptionContext } from "../../providers/Option";
+import { Button } from "./styles";
 
 const AddButton = ({ type, item, item_id }) => {
   const text = type === "add" ? "Add to cart" : "Remove from cart";
@@ -34,7 +35,7 @@ const AddButton = ({ type, item, item_id }) => {
     }
   };
 
-  return <button onClick={handleSend}>{text}</button>;
+  return <Button onClick={handleSend}>{text}</Button>;
 };
 
 export default AddButton;

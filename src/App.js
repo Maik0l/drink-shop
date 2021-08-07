@@ -1,4 +1,5 @@
 import Menu from "./components/Menu";
+import Footer from "./components/Footer";
 import Routes from "./routes";
 import GlobalStyle from "./styles/global";
 
@@ -8,6 +9,7 @@ function App() {
       <GlobalStyle />
       <Menu />
       <Routes />
+      <Footer />
     </div>
   );
 }

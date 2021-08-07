@@ -1,7 +1,6 @@
-import { Container, Content } from "./styles";
+import { Container, Content, DiminuteInfo } from "./styles";
 import AddButton from "../AddButton";
-import RemoveButton from "../RemoveButton";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { OptionContext } from "../../providers/Option";
 
 const Card = ({
@@ -24,12 +23,20 @@ const Card = ({
   return (
     <Container>
       <Content>
-        <div>{name}</div>
+        <span>{name}</span>
         <img alt={name} src={image_url} />
-        <div>{description}</div>
-        <div>{item_id}</div>
-        <div>{first_brewed}</div>
-        <div>{`${value} ${unit}`}</div>
+        <div>
+          <p>
+            {description.length > 85
+              ? description.slice(0, 85) + "..."
+              : description}
+          </p>
+          {/* <p>{description}</p> */}
+        </div>
+        <DiminuteInfo>
+          <div>First brewed: {first_brewed}</div>
+          <div>Volume: {`${value} ${unit}`}</div>
+        </DiminuteInfo>
         <div>
           {type === "add" && (
             <select name="options" onChange={handleChange}>
@@ -40,16 +47,12 @@ const Card = ({
             </select>
           )}
           <div>
-            {/* {type === "add" ? ( */}
             <AddButton
               type={type}
               option={option}
               item={item}
               item_id={item_id}
             />
-            {/* // ) : (
-            //   <RemoveButton item_id={item_id} option={option} />
-            // )} */}
           </div>
         </div>
       </Content>
