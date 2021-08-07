@@ -9,8 +9,7 @@ export const WeddingCartProvider = ({ children }) => {
   };
 
   const removeFromWeddingCart = (id) => {
-    const newCart = weddingCart.filter((item) => item.id !== id);
-
+    const newCart = weddingCart.filter((itemToStay) => itemToStay.id !== id);
     setWeddingCart(newCart);
   };
 

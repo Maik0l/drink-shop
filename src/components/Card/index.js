@@ -1,5 +1,6 @@
 import { Container, Content } from "./styles";
-import Button from "../Button";
+import AddButton from "../AddButton";
+import RemoveButton from "../RemoveButton";
 import { useState } from "react";
 
 const Card = ({
@@ -10,7 +11,7 @@ const Card = ({
   unit,
   value,
   item,
-  id,
+  item_id,
   type,
 }) => {
   const [option, setOption] = useState();
@@ -18,7 +19,7 @@ const Card = ({
   const handleChange = (event) => {
     setOption(event.target.value);
   };
-
+  console.log(item_id);
   return (
     <Container>
       <Content>
@@ -37,7 +38,11 @@ const Card = ({
             </select>
           )}
           <div>
-            <Button type={type} option={option} item={item} id={id} />
+            {type === "add" ? (
+              <AddButton type={type} option={option} item={item} />
+            ) : (
+              <RemoveButton item_id={item_id} />
+            )}
           </div>
         </div>
       </Content>

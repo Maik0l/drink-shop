@@ -13,11 +13,8 @@ const Home = () => {
     });
   };
 
-  console.log(productList);
-
   useEffect(() => getDrinks(), []);
 
-  console.log();
   return (
     <Container>
       {productList.map((item) => (
@@ -30,7 +27,7 @@ const Home = () => {
           unit={item.volume.unit}
           value={item.volume.value}
           item={item}
-          id={item.id}
+          item_id={item.id}
           type="add"
         />
       ))}

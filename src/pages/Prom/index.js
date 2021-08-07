@@ -17,6 +17,7 @@ const Prom = () => {
           unit={item.volume.unit}
           value={item.volume.value}
           item={item}
+          item_id={item.id}
         />
       ))}
     </div>

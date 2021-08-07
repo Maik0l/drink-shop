@@ -3,14 +3,10 @@ import { WeddingCartContext } from "../../providers/CartWedding";
 import { PromCartContext } from "../../providers/CartProm";
 import { CelebCartContext } from "../../providers/CartCeleb";
 
-const Button = ({ type, option, item, id }) => {
-  const text = type === "add" ? "Add to cart" : "Remove from cart";
-
-  const { addToWeddingCart, removeFromWeddingCart } =
-    useContext(WeddingCartContext);
-  const { addToPromCart, removeFromPromCart } = useContext(PromCartContext);
-  const { cartCeleb, removeFromCartCeleb, addToCartCeleb } =
-    useContext(CelebCartContext);
+const AddButton = ({ type, option, item }) => {
+  const { addToWeddingCart } = useContext(WeddingCartContext);
+  const { addToPromCart } = useContext(PromCartContext);
+  const { addToCartCeleb } = useContext(CelebCartContext);
 
   const handleSend = () => {
     if (option === "wedding") {
@@ -22,7 +18,7 @@ const Button = ({ type, option, item, id }) => {
     }
   };
 
-  return <button onClick={handleSend}>{text}</button>;
+  return <button onClick={handleSend}>Add to cart</button>;
 };
 
-export default Button;
+export default AddButton;

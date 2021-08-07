@@ -10,8 +10,9 @@ export const PromCartProvider = ({ children }) => {
 
   const removeFromPromCart = (id) => {
     const newCart = promCart.filter((item) => item.id !== id);
-
-    setPromCart(newCart);
+    console.log("oi");
+    console.log(id);
+    return setPromCart(newCart);
   };
 
   return (
