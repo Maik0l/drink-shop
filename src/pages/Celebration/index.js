@@ -19,6 +19,7 @@ const Celebration = () => {
           item={item}
           item_id={item.id}
           type="remove"
+          page="celeb"
         />
       ))}
     </div>

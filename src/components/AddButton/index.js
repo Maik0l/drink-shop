@@ -5,18 +5,33 @@ import { CelebCartContext } from "../../providers/CartCeleb";
 import { OptionContext } from "../../providers/Option";
 import { Button } from "./styles";
 
-const AddButton = ({ type, item, item_id }) => {
+const AddButton = ({ type, item, item_id, page }) => {
   const text = type === "add" ? "Add to cart" : "Remove from cart";
 
-  const { option, setOption } = useContext(OptionContext);
+  const { option } = useContext(OptionContext);
   const { addToWeddingCart, removeFromWeddingCart } =
     useContext(WeddingCartContext);
   const { addToPromCart, removeFromPromCart } = useContext(PromCartContext);
   const { addToCartCeleb, removeFromCartCeleb } = useContext(CelebCartContext);
 
-  console.log(type);
-  console.log(item_id);
-  console.log(option);
+  const handleRemoveCeleb = () => {
+    if (page === "celeb") {
+      removeFromCartCeleb(item_id);
+    }
+  };
+
+  const handleRemoveProm = () => {
+    if (page === "prom") {
+      removeFromPromCart(item_id);
+    }
+  };
+
+  const handleRemoveWedding = () => {
+    if (page === "wedding") {
+      removeFromWeddingCart(item_id);
+    }
+  };
+
   const handleSend = () => {
     if (type === "add") {
       if (option === "wedding") {
@@ -26,16 +41,21 @@ const AddButton = ({ type, item, item_id }) => {
       } else if (option === "celebration") {
         addToCartCeleb(item);
       }
-    } else {
-      console.log("remover");
-
-      removeFromWeddingCart(item_id);
-      removeFromPromCart(item_id);
-      removeFromCartCeleb(item_id);
     }
   };
 
-  return <Button onClick={handleSend}>{text}</Button>;
+  return (
+    <Button
+      onClick={
+        (page === "home" && handleSend) ||
+        (page === "celeb" && handleRemoveCeleb) ||
+        (page === "prom" && handleRemoveProm) ||
+        (page === "wedding" && handleRemoveWedding)
+      }
+    >
+      {text}
+    </Button>
+  );
 };
 
 export default AddButton;

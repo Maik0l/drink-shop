@@ -30,6 +30,7 @@ const Home = () => {
           item={item}
           item_id={item.id}
           type="add"
+          page="home"
         />
       ))}
     </Container>

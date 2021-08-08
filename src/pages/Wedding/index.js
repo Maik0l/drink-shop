@@ -18,6 +18,7 @@ const Wedding = () => {
           value={item.volume.value}
           item={item}
           item_id={item.id}
+          page="wedding"
         />
       ))}
     </div>

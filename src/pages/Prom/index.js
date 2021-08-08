@@ -19,6 +19,7 @@ const Prom = () => {
           item={item}
           item_id={item.id}
           type="remove"
+          page="prom"
         />
       ))}
     </div>
