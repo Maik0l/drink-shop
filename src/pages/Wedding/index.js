@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import Card from "../../components/Card";
 import { WeddingCartContext } from "../../providers/CartWedding";
+import { Container } from "./styles";
 
 const Wedding = () => {
   const { weddingCart } = useContext(WeddingCartContext);
 
   return (
-    <div>
+    <Container>
       {weddingCart.map((item) => (
         <Card
           key={item.id}
@@ -21,7 +22,7 @@ const Wedding = () => {
           page="wedding"
         />
       ))}
-    </div>
+    </Container>
   );
 };
 

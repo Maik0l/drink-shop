@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { PromCartContext } from "../../providers/CartProm";
 import Card from "../../components/Card";
+import { Container } from "./styles";
 
 const Prom = () => {
   const { promCart } = useContext(PromCartContext);
 
   return (
-    <div>
+    <Container>
       {promCart.map((item) => (
         <Card
           key={item.id}
@@ -22,7 +23,7 @@ const Prom = () => {
           page="prom"
         />
       ))}
-    </div>
+    </Container>
   );
 };
 
