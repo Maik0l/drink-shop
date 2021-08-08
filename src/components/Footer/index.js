@@ -1,5 +1,11 @@
+import { Container } from "./styles";
+
 const Footer = () => {
-  return <div>Developed by Maikol Moraes at Kenzie Academy Brasil © Q2</div>;
+  return (
+    <Container>
+      Developed by Maikol Moraes at Kenzie Academy Brasil © Q2
+    </Container>
+  );
 };
 
 export default Footer;
