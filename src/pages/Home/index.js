@@ -3,7 +3,6 @@ import Card from "../../components/Card";
 import { ProductListContext } from "../../providers/ProductList";
 import api from "../../services/api";
 import { Container } from "./styles";
-import Footer from "../../components/Footer";
 
 const Home = () => {
   const { productList, setProductList } = useContext(ProductListContext);

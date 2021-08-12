@@ -4,9 +4,11 @@ import { PromCartContext } from "../../providers/CartProm";
 import { CelebCartContext } from "../../providers/CartCeleb";
 import { OptionContext } from "../../providers/Option";
 import { Button } from "./styles";
+import { useToast } from "@chakra-ui/react";
 
 const AddButton = ({ type, item, item_id, page }) => {
   const text = type === "add" ? "Add to cart" : "Remove from cart";
+  const toast = useToast();
 
   const { option } = useContext(OptionContext);
   const { addToWeddingCart, removeFromWeddingCart } =
@@ -34,6 +36,13 @@ const AddButton = ({ type, item, item_id, page }) => {
 
   const handleSend = () => {
     if (type === "add") {
+      toast({
+        title: "Bebida adicionada",
+        description: "Sua bebida foi adicionada com sucesso!",
+        status: "success",
+        duration: 1000,
+        isClosable: true,
+      });
       if (option === "wedding") {
         addToWeddingCart(item);
       } else if (option === "prom") {

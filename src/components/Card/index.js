@@ -13,6 +13,7 @@ const Card = ({
   item,
   item_id,
   type,
+  page,
 }) => {
   const { option, setOption } = useContext(OptionContext);
 
@@ -31,7 +32,6 @@ const Card = ({
               ? description.slice(0, 85) + "..."
               : description}
           </p>
-          {/* <p>{description}</p> */}
         </div>
         <DiminuteInfo>
           <div>First brewed: {first_brewed}</div>
@@ -52,6 +52,7 @@ const Card = ({
               option={option}
               item={item}
               item_id={item_id}
+              page={page}
             />
           </div>
         </div>
